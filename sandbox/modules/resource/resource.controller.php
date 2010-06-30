@@ -140,7 +140,7 @@
             $oResourceModel = &getModel('resource');
             $oDocumentController = &getController('document');
 
-            $args = Context::gets('package_srl','item_srl','file','version','description','screenshot','document_srl');
+            $args = Context::gets('package_srl','item_srl','version','description','document_srl');
             foreach($args as $key => $val) if(!trim($val)) return new Object(-1,'msg_invalid_request');
 
             $logged_info = Context::get('logged_info');
