@@ -55,7 +55,7 @@ select{width:90%}
 .bd{position:relative;overflow:hidden;clear:both}
 .bd .p { margin:10px; padding:10px; border:1px solid #ddd; background-color:#f3f3f3;}
 /* Hx */
-.hx{position:relative;margin:-1px 0; padding:10px;background:#ddd;border:1px solid #999;border-left:0;border-right:0;text-shadow:1px 1px #fff}
+.hx{position:relative;margin:-1px 0; padding:10px;background:#ddd;border:1px solid #999;border-left:0;border-right:0;text-shadow:1px 1px #fff; height:28px;}
 .hx h2,.hx h3{display:inline}
 .hx h2{font-size:20px}
 .hx h3{font-size:16px}
