@@ -35,7 +35,7 @@
 		<!--@foreach($item_list as $key => $val)-->
 		<li>
 			<a href="{getUrl('package_srl', $val->package_srl)}">
-				<img src="http://naradesign.net/wp/wp-content/uploads/image/DSC_5818.jpg" alt="" class="th" /> 
+				<img src="{$val->item_screenshot_url}" alt="" class="th" /> 
 				<span class="title">
 					<!--@if($val->category_srl)-->{$categories[$val->category_srl]->title} &rsaquo; <!--@end-->
 					<strong>{htmlspecialchars($val->title)} ver. {htmlspecialchars($val->item_version)}</strong>
