@@ -131,7 +131,7 @@ table.packageList {width:100%; height:100px; table-layout:fixed; border-bottom:1
 table td { vertical-align:top; }
 table td.thumbnail { text-align:center; padding:10px 0; }
 table td.thumbnail img { border:1px solid #ccc; padding:2px; overflow:hidden; *zoom:1; }
-table td.title h3 { padding:0; margin:0; }
+table td.title h3 { padding:0; margin:10px 0 0 0; }
 table td.title a {text-decoration:none; color:#000; }
 table td.description { padding:5px 0 0 0; color:#777; height:44px; white-space:normal; overflow:hidden; }
 table td.info { height:18px; }
