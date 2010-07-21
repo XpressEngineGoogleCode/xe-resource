@@ -50,10 +50,16 @@
 
         function dispResourceAdminInsert() {
             $oModuleModel = &getModel('module');
-            $oLayoutMode = &getModel('layout');
+            $oLayoutModel = &getModel('layout');
 
             Context::set('skin_list', $oModuleModel->getSkins($this->module_path));
-            Context::set('layout_list', $oLayoutMode->getLayoutList());
+            Context::set('layout_list', $oLayoutModel->getLayoutList());
+
+			$mobile_layout_list = $oLayoutModel->getLayoutList(0,"M");
+			Context::set('mlayout_list', $mobile_layout_list);
+
+			$mskin_list = $oModuleModel->getSkins($this->module_path, "m.skins");
+			Context::set('mskin_list', $mskin_list);
         }
 
         function dispResourceAdminCategory() {

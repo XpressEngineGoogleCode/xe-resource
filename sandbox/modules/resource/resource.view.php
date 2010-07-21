@@ -88,6 +88,7 @@
                 Context::set('order_type', $order_type);
 
                 $category_srl = Context::get('category_srl');
+				if(!$category_srl) $category_srl = Context::get('category');
                 $childs = Context::get('childs');
 
                 $search_keyword = Context::get('search_keyword');

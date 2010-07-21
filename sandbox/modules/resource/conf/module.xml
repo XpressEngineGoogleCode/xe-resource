@@ -75,5 +75,7 @@
         <action name="procResourceAdminDelete" type="controller" standalone="true" />
         <action name="procResourceAdminDeletePackage" type="controller" standalone="true" />
 		<action name="getResourceItems" type="api" standalone="true" />
+
+		<action name="dispResourceCategory" type="mobile" />
     </actions>
 </module>
