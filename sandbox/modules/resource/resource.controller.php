@@ -21,12 +21,16 @@
             foreach($args as $key => $val) if(!trim($val)) return new Object(-1,'msg_invalid_request');
             if($args->homepage&&!preg_match('/:\/\//',$args->homepage)) $args->homepage = 'http://'.$args->homepage;
 
-            if($this->grant->manager) $args->status = 'accepted';
-
             $args->package_srl = getNextSequence();
             $args->module_srl = $this->module_srl;
             $args->member_srl = $logged_info->member_srl;
             $args->list_order = -1*$args->package_srl;
+
+            if($this->grant->manager) $args->status = 'accepted';
+            else {
+                $output = executeQuery('resource.isAcceptedOnce', $args);
+                if($output->data->count>0) $args->status = 'accepted';
+            }
 
             $output = executeQuery('resource.insertPackage', $args);
             if(!$output->toBool()) return $output;

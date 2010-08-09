@@ -168,3 +168,5 @@ form.statusSelect { margin-bottom:10px; text-align:right; }
 .pagination a.nextEnd{ font-weight:normal !important; margin:0 !important; white-space:nowrap; text-decoration:none !important; border:1px solid #e7e7e7; background-image:url(../img/arrowPagination.gif); background-repeat:no-repeat;}
 .pagination a.prevEnd{ padding-left:14px; background-position:left center; }
 .pagination a.nextEnd{ padding-right:14px; background-position:right center; }
+
+.insertPackage { font-weight:bold; }
