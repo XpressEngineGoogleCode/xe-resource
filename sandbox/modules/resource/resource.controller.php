@@ -1,7 +1,7 @@
 <?php
     /**
      * @class  resourceController
-     * @author zero (skklove@gmail.com)
+     * @author NHN (developers@xpressengine.com)
      * @brief  resource controller class
      **/
 

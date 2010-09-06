@@ -1,7 +1,7 @@
 <?php
     /**
      * @class  resourceView
-     * @author zero (skklove@gmail.com)
+     * @author NHN (developers@xpressengine.com)
      * @brief  resource view class
      **/
 
