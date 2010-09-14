@@ -75,7 +75,9 @@ input[type=radio]{width:13px;height:13px;margin:0;padding:0}
 .lt .auth{display:block;font-size:12px;margin:0 0 10px 0; color:#333}
 .lt .auth .time{padding:0 5px;margin:0 0 10px 0;border-left:1px solid #bfbfbf}
 .lt .meta{display:block;font-size:14px;margin:0 0 15px 0}
-.lt .star{ color:#6352d2}
+.lt .star i{font-style:normal}
+.lt .star .t{color:#a06acd}
+.lt .star .f{color:#cdcccc}
 .lt .point{ border-left:1px solid #ccc; padding:0 5px; color:#6352d2}
 .lt .down{ display:block;font-size:12px; color:#333}
 .lt .summary{display:block;font-size:12px; line-height:1.5; color:#333}
@@ -106,6 +108,9 @@ input[type=radio]{width:13px;height:13px;margin:0;padding:0}
 .rp .btn.re{background-position:-30px -32px}
 .rp .auth{font-size:12px}
 .rp .auth .time{padding:0 5px;border-left:1px solid #bfbfbf}
+.rp .star i{font-style:normal}
+.rp .star .t{color:#a06acd}
+.rp .star .f{color:#cdcccc}
 /* Form Field */
 .origin{padding:10px 0;margin:0 10px;font-size:14px}
 .ff{margin:0;padding:10px 0}

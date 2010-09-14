@@ -54,7 +54,7 @@
 		{@ $_comment_list = $package->getComments() }
 		<!--@foreach($_comment_list as $key => $comment)-->
 		<li>
-			<p><!--@for($i=0;$i<5;$i++)--><!--@if($i<$comment->get('voted_count'))-->★<!--@else-->☆<!--@end--><!--@end--></p>
+			<p class="star"><!--@for($i=0;$i<5;$i++)--><!--@if($i<$comment->get('voted_count'))--><i class="t">★</i><!--@else--><i class="f">★</i><!--@end--><!--@end--></p>
 			{$comment->getContent(false)}
 			<span class="auth">{$comment->getNickName()} <span class="time">{$comment->getRegdate()}</span></span>
 			<!--@if($comment->isGranted())-->
