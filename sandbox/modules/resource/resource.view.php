@@ -18,7 +18,6 @@
             }
             $this->setTemplatePath($template_path);
             $this->setTemplateFile(strtolower(str_replace('dispResource','',$this->act)));
-
             Context::addJsFile($this->module_path.'tpl/js/resource.js');
         }
 
@@ -93,7 +92,7 @@
 
                 $search_keyword = Context::get('search_keyword');
 
-                $output = $oResourceModel->getLatestItemList($this->module_srl, $category_srl, $childs, null, $search_keyword, $order_target, $order_type, $page);
+                $output = $oResourceModel->getLatestItemList($this->module_srl, $category_srl, $childs, null, $search_keyword, $order_target, $order_type, $page, $this->module_info->list_count);
                 Context::set('item_list', $output->data);
                 Context::set('total_count', $output->total_count);
                 Context::set('total_page', $output->total_page);
@@ -241,7 +240,7 @@
             $search_keyword = Context::get('search_keyword');
             $page = Context::get('page');
 
-            $output = $oResourceModel->getLatestItemList($this->module_srl, $category_srl, null, null, $search_keyword, null, null, $page);
+            $output = $oResourceModel->getLatestItemList($this->module_srl, $category_srl, null, null, $search_keyword, null, null, $page, $this->module_info->list_count);
             Context::set('item_list', $output->data);
             Context::set('total_count', $output->total_count);
             Context::set('total_page', $output->total_page);
