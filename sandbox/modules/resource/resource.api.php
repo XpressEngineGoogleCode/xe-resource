@@ -17,7 +17,6 @@ class resourceAPI extends resource
 			$module_info = $oModuleModel->getModuleInfoByMid($mid, $site_srl);
 			$module_srl = $module_info->module_srl;
 		}
-		else return;
 
 		if(!$module_srl) return;
 
@@ -32,10 +31,13 @@ class resourceAPI extends resource
 
 	function dispResourceIndex(&$oModule)
 	{
-		$latest_package = Context::get('latest_package');
 		$package_categories = Context::get('package_categories');
 		$oModule->add('package_categories',$package_categories);
+		
+		$categories = Context::get('categories');
+		$oModule->add('categories',$categories);
 
+		$latest_package = Context::get('latest_package');
 		if($latest_package)
 		{
 			$oModule->add('latest_package',$latest_package);
@@ -60,7 +62,8 @@ class resourceAPI extends resource
 			$oModule->add('order_type',$order_type);
 			$oModule->add('order_target',$order_target);
 		}
-
 	}
+
+
 }
 ?>

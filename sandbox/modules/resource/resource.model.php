@@ -89,6 +89,7 @@
             $args->list_count = $list_count;
             $args->page = $page;
             $args->order_type = $order_type;
+            $args->page_count = 10;
             if($order_target == 'download') $args->sort_index = 'package.downloaded';
             elseif($order_target == 'popular') $args->sort_index = 'package.voted';
             else {

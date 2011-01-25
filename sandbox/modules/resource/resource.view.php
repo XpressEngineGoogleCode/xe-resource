@@ -46,7 +46,8 @@
                 $args->module_srl = $this->module_srl;
                 $args->package_srl = $package_srl;
                 $output = executeQuery('resource.getLatestItem', $args);
-                Context::set('latest_package', $latest_package = $output->data);
+				$latest_package = $output->data;
+                Context::set('latest_package', $latest_package);
             }
 
             if($latest_package) {
