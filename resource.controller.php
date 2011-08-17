@@ -217,9 +217,10 @@
             $oResourceModel = &getModel('resource');
             $oFileController = &getController('file');
 
-            $args = Context::gets('package_srl','item_srl','attach_file','attach_screenshot');
+            $args = Context::gets('package_srl','item_srl','attach_file','attach_screenshot', 'latest_item_srl');
             if(!$this->module_srl) return  new Object(-1,'msg_invalid_request');
             if(!$args->package_srl || !$args->item_srl) return  new Object(-1,'msg_invalid_request');
+
             if(!is_uploaded_file($args->attach_file['tmp_name']))  new Object(-1,'msg_invalid_request');
             if(!is_uploaded_file($args->attach_screenshot['tmp_name']))  new Object(-1,'msg_invalid_request');
 
@@ -235,7 +236,21 @@
             if(!$item) return  new Object(-1,'msg_invalid_request');
 
             $output = $oFileController->insertFile($args->attach_file, $this->module_srl, $args->item_srl);
-            if(!$output || !$output->toBool()) return $output;
+            if(!$output || !$output->toBool()) 
+			{
+				$pargs->module_srl = $this->module_srl;
+				$pargs->package_srl = $args->package_srl;
+				$pargs->update_order = $args->latest_item_srl * -1;
+				$pargs->latest_item_srl = $args->latest_item_srl;
+				$poutput = executeQuery('resource.updatePackage', $pargs);
+
+				$dargs->module_srl = $this->module_srl;
+				$dargs->package_srl = $args->package_srl;
+				$dargs->item_srl = $args->item_srl;
+				$doutput = executeQuery('resource.deleteItems', $dargs);
+
+				return $output;
+			}
             $args->file_srl = $output->get('file_srl');
 
             $output = $oFileController->insertFile($args->attach_screenshot, $this->module_srl, $args->item_srl);
