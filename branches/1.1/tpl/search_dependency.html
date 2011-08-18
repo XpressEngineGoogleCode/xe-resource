@@ -23,13 +23,13 @@
                 <!--@end-->
                 <!--@if($val->depth<1)-->
                 <!--@if($val->child_count>0)-->
-                <optgroup label="{htmlspecialchars($val->title)}">
+                <optgroup label="{$val->title}">
                 <!--@else-->
-                <option value="{$val->category_srl}" <!--@if($category_srl == $val->category_srl)-->selected="selected"<!--@end-->>{htmlspecialchars($val->title)}</option>
+                <option value="{$val->category_srl}" <!--@if($category_srl == $val->category_srl)-->selected="selected"<!--@end-->>{$val->title}</option>
                 <!--@end-->
                 <!--@end-->
                 <!--@if($val->depth>0)-->
-                    <option value="{$val->category_srl}" <!--@if($category_srl == $val->category_srl)-->selected="selected"<!--@end-->>{htmlspecialchars($val->title)}</option>
+                    <option value="{$val->category_srl}" <!--@if($category_srl == $val->category_srl)-->selected="selected"<!--@end-->>{$val->title}</option>
                 <!--@end-->
                 {@ $_curDepth = $val->depth}
             <!--@end-->
@@ -43,22 +43,22 @@
     </tr>
     <!--@foreach($item_list as $key => $val)-->
     <tr>
-        <td colspan="2">[{htmlspecialchars($categories[$val->category_srl]->title)}] {htmlspecialchars($val->title)}</td>
-        <td>{htmlspecialchars($val->path)}</td>
-        <td class="center">{htmlspecialchars($val->item_version)}</td>
-        <td class="center"><a href="#" onclick="doInsertDependency({$val->item_srl},'[{htmlspecialchars($categories[$val->category_srl]->title)}] {htmlspecialchars($val->title)} (ver. {htmlspecialchars($val->item_version)})'); return false;" class="buttonSet buttonActive"><span>{$lang->cmd_select}</span></a></td>
+        <td colspan="2">[{$categories[$val->category_srl]->title}] {$val->title}</td>
+        <td>{$val->path}</td>
+        <td class="center">{$val->item_version}</td>
+        <td class="center"><a href="#" onclick="doInsertDependency({$val->item_srl},'[{$categories[$val->category_srl]->title}] {$val->title} (ver. {$val->item_version})'); return false;" class="buttonSet buttonActive"><span>{$lang->cmd_select}</span></a></td>
     </tr>
     <!--@end-->
     </table>
 
     <!-- 페이지 네비게이션 -->
     <div class="pagination a1">
-        <a href="{getUrl('page','')}" class="prevEnd">{$lang->first_page}</a>
+        <a href="{getUrl('page','')}" class="prevEnd">{$lang->first_page}</a> 
         <!--@while($page_no = $page_navigation->getNextPage())-->
             <!--@if($page == $page_no)-->
-                <strong>{$page_no}</strong>
+                <strong>{$page_no}</strong> 
             <!--@else-->
-                <a href="{getUrl('page',$page_no)}">{$page_no}</a>
+                <a href="{getUrl('page',$page_no)}">{$page_no}</a> 
             <!--@end-->
         <!--@end-->
         <a href="{getUrl('page',$page_navigation->last_page)}" class="nextEnd">{$lang->last_page}</a>
