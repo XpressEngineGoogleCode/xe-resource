@@ -5,8 +5,8 @@
 <!--@if($module_info)-->
 <div class="header4">
     <h4 class="xeAdmin">
-        {htmlspecialchars($module_info->mid)}
-        <span class="vr">|</span>
+        {$module_info->mid}
+        <span class="vr">|</span> 
         <a href="{getSiteUrl($module_info->domain,'','mid',$module_info->mid)}" onclick="window.open(this.href); return false;" class="view">View</a>
     </h4>
 
