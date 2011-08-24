@@ -28,6 +28,9 @@
                 }
             }
             Context::set('module_srl', $this->module_info->module_srl);
+
+			$security = new Security();
+			$security->encodeHTML('module_info.');
         }
 
         function dispResourceAdminList() {
@@ -46,6 +49,9 @@
             Context::set('page', $output->page);
             Context::set('resource_list', $output->data);
             Context::set('page_navigation', $output->page_navigation);
+
+			$security = new Security();
+			$security->encodeHTML('resource_list..');
         }
 
         function dispResourceAdminInsert() {
@@ -83,6 +89,9 @@
         function dispResourceAdminSkin() {
             $oModuleAdminModel = &getAdminModel('module');
             Context::set('skin_content', $oModuleAdminModel->getModuleSkinHTML($this->module_info->module_srl));
+
+			$security = new Security();
+			$security->encodeHTML('module_info.');
         }
 
 
