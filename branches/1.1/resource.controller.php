@@ -175,6 +175,7 @@
             $doc_args->list_order = $doc_args->document_srl*-1;
             $doc_args->tags = Context::get('tag');
             $doc_args->allow_comment = 'Y';
+	    $doc_args->commentStatus = 'ALLOW';
             $oDocumentController->insertDocument($doc_args);
 
             if($this->module_info->resource_notify_mail) {
