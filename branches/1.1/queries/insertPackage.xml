@@ -7,7 +7,7 @@
         <column name="package_srl" var="package_srl" filter="number" notnull="notnull" />
         <column name="category_srl" var="category_srl" notnull="notnull" />
         <column name="member_srl" var="member_srl" notnull="notnull" />
-        <column name="path" var="path" notnull="notnull" />
+        <column name="path" var="path" />
         <column name="license" var="license" notnull="notnull" />
         <column name="title" var="title" notnull="notnull" />
         <column name="homepage" var="homepage" notnull="notnull" />
