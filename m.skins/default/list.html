@@ -39,7 +39,13 @@
 				<span class="auth"><strong>{$val->nick_name}</strong> <span class="time">{zdate($val->item_regdate, "Y-m-d H:i")}</span></span>
 				<span class="meta">
 					<span class="star"><!--@for($i=0;$i<5;$i++)--><!--@if($i<$val->package_star)--><i class="t">★</i><!--@else--><i class="f">★</i><!--@end--><!--@end--></span>
-					<span class="point">{sprintf("%0.1f",$val->package_voted/$val->package_voter*2)} /{number_format($val->package_voter)}</span>
+					<span class="point">
+						<!--@if($val->package_voter)-->
+						{sprintf("%0.1f",$val->package_voted/$val->package_voter*2)} /{number_format($val->package_voter)}
+						<!--@else-->
+						0 / 0
+						<!--@end-->
+					</span>
 					<span class="down">{$lang->package_downloaded_count} : {number_format($val->package_downloaded)} </span>
 				</span>
 				<span class="summary">{cut_str(htmlspecialchars($val->package_description),200)}</span>

@@ -37,7 +37,11 @@
 			<dt>{$lang->resource_estimate}</dt>
 			<dd>
 				<!--@for($i=0;$i<5;$i++)--><!--@if($i<$package->get('item_star'))-->★<!--@else-->☆<!--@end--><!--@end-->
+				<!--@if($package->get('item_voter'))-->
 				{sprintf("%0.1f",$package->get('item_voted')/$package->get('item_voter')*2)} /{number_format($package->get('item_voter'))}
+				<!--@else-->
+				0 / 0
+				<!--@end-->
 			</dd>
 		</dl>
 		<p>{$package->getContent(false)}</p>
