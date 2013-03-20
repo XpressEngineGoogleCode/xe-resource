@@ -154,6 +154,9 @@
 
             if(!$this->grant->manager && $logged_info->member_srl != $selected_package->member_srl) return new Object(-1,'msg_not_permitted');
 
+			$oDB = &DB::getInstance();
+			$oDB->begin();
+
             $args->module_srl = $this->module_srl;
             $args->list_order = -1 * $args->item_srl;
 
@@ -162,10 +165,18 @@
             $pargs->update_order = $args->list_order;
             $pargs->latest_item_srl = $args->item_srl;
             $output = executeQuery('resource.updatePackage', $pargs);
-            if(!$output->toBool()) return $output;
+            if(!$output->toBool())
+			{
+				$oDB->rollback();
+				return $output;
+			}
 
             $output = executeQuery('resource.insertItem', $args);
-            if(!$output->toBool()) return $output;
+            if(!$output->toBool())
+			{
+				$oDB->rollback();
+				return $output;
+			}
 
             $doc_args->document_srl = $args->document_srl;
             $doc_args->category_srl = $selected_package->category_srl;
@@ -176,7 +187,12 @@
             $doc_args->tags = Context::get('tag');
             $doc_args->allow_comment = 'Y';
 			$doc_args->commentStatus = 'ALLOW';
-            $oDocumentController->insertDocument($doc_args);
+            $output = $oDocumentController->insertDocument($doc_args);
+			if(!$output->toBool())
+			{
+				$oDB->rollback();
+				return $output;
+			}
 
             if($this->module_info->resource_notify_mail) {
                 $message = '';
@@ -186,6 +202,8 @@
             }
 
             $this->insertDependency($this->module_srl, $args->package_srl, $args->item_srl, trim(Context::get('dependency')));
+
+			$oDB->commit();
         }
 
         function insertDependency($module_srl, $package_srl, $item_srl, $targets) {
