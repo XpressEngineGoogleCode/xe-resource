@@ -1,0 +1,1 @@
+XE Resource is a download module for [XpressEngine](http://code.google.com/p/xe-core/).
